@@ -25,6 +25,11 @@ y.domain([0, d3.max(DUMMY_DATA, d => d.value) + 3])
 const chart = chartContainer.append('g');
 
 chart
+.append('g')
+.call(d3.axisBottom(x))
+.attr('color', '#4f009e');
+
+chart
 .selectAll('.bar')
 .data(DUMMY_DATA)
 .enter()
@@ -43,3 +48,10 @@ chart
 .text(data => data.value)
 .attr('x', data => x(data.region) + x.bandwidth() / 2)
 .attr('y', data => y(data.value) - 20);
+
+d3.select("body").append("svg")
+    .attr("width", 1440)
+    .attr("height", 30)
+  .append("g")
+    .attr("transform", "translate(0,30)")
+    .call(axis);
