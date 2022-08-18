@@ -5,8 +5,9 @@ const DUMMY_DATA = [
     { id:'d4', region: 'Tanzania', value:6},
 ];
 
+const MARGIN = { top: 20, bottom: 10};
 const CHART_WIDTH = 600;
-const CHART_HEIGHT = 400;
+const CHART_HEIGHT = 400 - MARGIN.top - MARGIN.bottom;
 
 const x = d3.scaleBand()
 .rangeRound([0, CHART_WIDTH])
@@ -27,6 +28,7 @@ const chart = chartContainer.append('g');
 chart
 .append('g')
 .call(d3.axisBottom(x))
+.attr('transform', `translate(0, ${CHART_HEIGHT})`)
 .attr('color', '#4f009e');
 
 chart
