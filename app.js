@@ -20,6 +20,7 @@ const chartContainer = d3.select('svg')
 .attr('height', CHART_HEIGHT); //container that holds my chart
 
 x.domain(DUMMY_DATA.map((d) => d.region));
+y.domain([0, d3.max(DUMMY_DATA, d => d.value) + 3])
 
 const chart = chartContainer.append('g');
 
