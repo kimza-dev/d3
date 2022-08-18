@@ -68,4 +68,16 @@ const listItems = d3
 .enter()
 .append('li');
 
-listItems('span').text(data => data.region);
+listItems.append('span').text(data => data.region);
+
+listItems
+.append('input')
+.attr('type', 'checkbox')
+.attr('checked', true)
+.on('change', (data) => {
+    if (unselectedIds.indecof(data.id) === -1 ) {
+        unselectedIds.push(data.id);
+    } else {
+        unselectedIds = unselectedIds.filter( id => id !== data.id);
+    }
+});
