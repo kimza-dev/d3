@@ -30,4 +30,16 @@ chart
 .enter()
 .append('rect')
 .classed('bar', true)
-.attr('height');
+.attr('width', x.bandwidth())
+.attr('height',data => CHART_HEIGHT - y(data.value))
+.attr('x', data => x(data.region))
+.attr('y', data => y(data.value)); 
+
+
+chart
+.selectAll('.label').data(DUMMY_DATA)
+.enter()
+.append('text')
+.text(data => data.value)
+.attr('x', data => x(data.region) + x.bandwidth() / 2)
+.attr('y', data => y(data.value) - 20);
