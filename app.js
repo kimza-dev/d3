@@ -27,7 +27,8 @@ const chart = chartContainer.append('g');
 
 chart
 .append('g')
-.call(d3.axisBottom(x))
+.call(d3.axisBottom(x)
+.tickSizeOuter(0))
 .attr('transform', `translate(0, ${CHART_HEIGHT})`)
 .attr('color', '#4f009e');
 
@@ -57,3 +58,14 @@ d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(0,30)")
     .call(axis);
+
+
+const listItems = d3
+.select('#data')
+.select('ul')
+.select('li')
+.data(DUMMY_DATA)
+.enter()
+.append('li');
+
+listItems('span').text(data => data.region);
