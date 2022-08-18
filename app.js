@@ -14,4 +14,10 @@ const chartContainer = d3.select('svg')
 
 const chart = chartContainer.append('g');
 
-chart.selectAll('.bar').data(DUMMY_DATA);
+chart
+.selectAll('.bar')
+.data(DUMMY_DATA)
+.enter()
+.append('rect')
+.classed('bar', true)
+.attr('height');
