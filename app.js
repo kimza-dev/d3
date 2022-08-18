@@ -13,3 +13,5 @@ const chartContainer = d3.select('svg')
 .attr('height', CHART_HEIGHT); //container that holds my chart
 
 const chart = chartContainer.append('g');
+
+chart.selectAll('.bar').data(DUMMY_DATA);
